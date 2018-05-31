@@ -43,6 +43,15 @@ GameOfLife.prototype.getCellAt = function(row, column) {
     return this.cells[row][column];
 }
 
+GameOfLife.prototype.setCell = function(row, column, state) {
+    this.cells[row][column] = state
+}
+
+GameOfLife.prototype.toggleCell = function(row, column) {
+    var currentValue = this.cells[row][column];
+    this.cells[row][column] = currentValue ? 0 : 1;
+}
+
 GameOfLife.prototype.getNeighbours = function(row, column) {
     var neighbours = [];
     var left = [row, column - 1];
@@ -60,8 +69,6 @@ GameOfLife.prototype.getNeighbours = function(row, column) {
             neighbours.push(neighboursPos[i]);
         }
     }
-
-    console.log(neighbours);
     return neighbours;
 }
 
