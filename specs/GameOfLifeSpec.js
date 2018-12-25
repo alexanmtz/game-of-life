@@ -22,7 +22,7 @@ describe("Game of life", function() {
     });
 
     it("check if a cell in a given position is dead", function() {
-        expect(expect(gol.getCellAt(1,1)).toEqual(0));
+        expect(gol.getCellAt(1,1)).toEqual(0);
     });
   });
 
@@ -56,5 +56,22 @@ describe("Game of life", function() {
     })
 
   });
+
+  describe("going to generations", function() {
+    it("defining the first generation", function() {
+      gol.tick();
+      expect(gol.getCellAt(0, 0)).toEqual(0);
+      expect(gol.getCellAt(0, 1)).toEqual(0);
+      expect(gol.getCellAt(0, 2)).toEqual(0);
+
+      expect(gol.getCellAt(1, 0)).toEqual(0);
+      expect(gol.getCellAt(1, 1)).toEqual(0);
+      expect(gol.getCellAt(1, 2)).toEqual(0);
+      
+      expect(gol.getCellAt(2, 0)).toEqual(0);
+      expect(gol.getCellAt(2, 1)).toEqual(0);
+      expect(gol.getCellAt(2, 2)).toEqual(0);
+    })
+  })
 
 });

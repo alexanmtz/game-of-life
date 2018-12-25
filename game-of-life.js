@@ -72,3 +72,7 @@ GameOfLife.prototype.getNeighbours = function(row, column) {
     return neighbours;
 }
 
+GameOfLife.prototype.tick = function() {
+    return;
+}
+
