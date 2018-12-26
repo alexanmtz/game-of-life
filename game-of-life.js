@@ -52,6 +52,10 @@ GameOfLife.prototype.toggleCell = function(row, column) {
     this.cells[row][column] = currentValue ? 0 : 1;
 }
 
+GameOfLife.prototype.isLive = function(row, column) {
+    return this.cells[row][column] === 1;
+}
+
 GameOfLife.prototype.getNeighbours = function(row, column) {
     var neighbours = [];
     var left = [row, column - 1];
