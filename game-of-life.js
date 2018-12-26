@@ -1,8 +1,8 @@
-function GameOfLife(w, h) {
+function GameOfLife(w, h, cells) {
     this.width = w;
     this.height = h;
     this.size = w * h;
-    this.cells = [];
+    this.cells = cells || [];
 }
 
 GameOfLife.prototype.getSize = function() {
@@ -75,8 +75,39 @@ GameOfLife.prototype.getNeighbours = function(row, column) {
     return neighbours;
 }
 
+GameOfLife.prototype.getLiveNeighbours = function(row, column) {
+    var neighbours = this.getNeighbours(row, column);
+    var liveNeighbours = [];
+    for(var i = 0; i < neighbours.length; i++) {
+        if(this.isLive(neighbours[0][0], neighbours[0][1])) {
+            liveNeighbours.push(neighbours[i])
+        }
+    }
+    return liveNeighbours;
+}
+
 GameOfLife.prototype.tick = function() {
-    return;
+    for(var i = 0; i < this.width; i++) {
+        for(var j = 0; j < this.height; j++) {
+            var cell_state = this.isLive(i,j);
+            var cell_neighbours = this.getLiveNeighbours(i,j);
+            if(cell_state) {
+                if(cell_neighbours.length < 2) {
+                    this.setCell(i, j, 0);
+                }
+                if(cell_neighbours.length === 2 || cell_neighbours.length === 3) {
+                    this.setCell(i, j, 1);
+                }
+                if(cell_neighbours.length > 3) {
+                    this.setCell(i, j, 0);
+                }
+            } else {
+                if(cell_neighbours.length === 3) {
+                    this.setCell(i, j, 1);
+                }
+            }
+        }
+    }
 }
 
 

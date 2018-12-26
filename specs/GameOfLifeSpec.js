@@ -67,7 +67,7 @@ describe("Game of life", function() {
     })
   });
 
-  xdescribe("going to generations", function() {
+  describe("going to generations", function() {
     it("defining the first generation with a empty grid", function() {
       gol.tick();
       expect(gol.getCellAt(0, 0)).toEqual(0);
@@ -83,17 +83,20 @@ describe("Game of life", function() {
       expect(gol.getCellAt(2, 2)).toEqual(0);
     })
 
+    it("get live neighbours with no living cell", function() {
+      var neighboors = gol.getLiveNeighbours(0, 0)
+      expect(neighboors.length).toEqual(0)
+    });
+
+    xit("get live neighbours with living cell", function() {
+      var neighboors = gol.getLiveNeighbours(0, 0)
+      expect(neighboors.length).toEqual(0)
+    });
+
     xit("Any live cell with fewer than two live neighbours dies, as if caused by underpopulation", function() {
       gol.setCell(0, 0, 1);
       gol.tick();
-      var neighboors = gol.getNeighbours(0, 0)
-
-      expect(gol.getCellAt(0, 0)).toEqual(1);
-      expect(gol.getCellAt(0, 1)).toEqual(0);
-      expect(gol.getCellAt(0, 2)).toEqual(0);
-      expect(neighboors[0]).toEqual([0, 1]);
-      expect(neighboors[1]).toEqual([1, 0]);
-      expect(neighboors[2]).toEqual([1, 1]);
+      expect(gol.isLive(0, 0)).toEqual(false);
     })
   })
 
