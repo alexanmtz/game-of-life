@@ -24,15 +24,14 @@ GameOfLife.prototype.fill = function() {
 
 GameOfLife.prototype.populate = function() {
     var rows = [];
-    var columns = [];
     for(var i=0; i < this.width; i++) {
-        columns.push(Math.round(Math.random())); // pretty weird, but it works, cause if Math.random() generates a number less than 0.5 the result will be 0 otherwise it should be 1.
-    }
-    for(var i=0; i < this.height; i++) {
-        rows.push(columns)
+        rows.push([]);
+        for(var j=0; j < this.height; j++) {
+            rows[i][j] = Math.round(Math.random());
+        }
     }
     this.cells = rows;
-    return rows;
+    return this;
 };
 
 GameOfLife.prototype.getCells = function() {
@@ -79,4 +78,5 @@ GameOfLife.prototype.getNeighbours = function(row, column) {
 GameOfLife.prototype.tick = function() {
     return;
 }
+
 
