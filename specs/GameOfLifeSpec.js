@@ -88,12 +88,12 @@ describe("Game of life", function() {
       expect(neighboors.length).toEqual(0)
     });
 
-    xit("get live neighbours with living cell", function() {
+    it("get live neighbours with living cell", function() {
       var neighboors = gol.getLiveNeighbours(0, 0)
       expect(neighboors.length).toEqual(0)
     });
 
-    xit("Any live cell with fewer than two live neighbours dies, as if caused by underpopulation", function() {
+    it("Any live cell with fewer than two live neighbours dies, as if caused by underpopulation", function() {
       gol.setCell(0, 0, 1);
       gol.tick();
       expect(gol.isLive(0, 0)).toEqual(false);

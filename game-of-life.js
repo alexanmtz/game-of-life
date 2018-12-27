@@ -79,7 +79,7 @@ GameOfLife.prototype.getLiveNeighbours = function(row, column) {
     var neighbours = this.getNeighbours(row, column);
     var liveNeighbours = [];
     for(var i = 0; i < neighbours.length; i++) {
-        if(this.isLive(neighbours[0][0], neighbours[0][1])) {
+        if(this.isLive(neighbours[i][0], neighbours[i][1])) {
             liveNeighbours.push(neighbours[i])
         }
     }
@@ -87,8 +87,8 @@ GameOfLife.prototype.getLiveNeighbours = function(row, column) {
 }
 
 GameOfLife.prototype.tick = function() {
-    for(var i = 0; i < this.width; i++) {
-        for(var j = 0; j < this.height; j++) {
+    for(var i = 0; i < this.width - 1; i++) {
+        for(var j = 0; j < this.height - 1; j++) {
             var cell_state = this.isLive(i,j);
             var cell_neighbours = this.getLiveNeighbours(i,j);
             if(cell_state) {
